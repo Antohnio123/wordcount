@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"flag"
 	"fmt"
 	"os"
@@ -14,10 +13,6 @@ func main() {
 		fail(err)
 	}
 	count, err := wordcount(src)
-	if count == 0 {
-		fmt.Println("Строка не входит в паттерн")
-		os.Exit(0)
-	}
 	fmt.Println(count)
 }
 
@@ -26,9 +21,6 @@ func main() {
 func readInput() (src string, err error) {
 	flag.Parse()
 	src = strings.Join(flag.Args(), "")
-	if src == "" {
-		return src, errors.New("missing string to count words")
-	}
 	return src, nil
 }
 
